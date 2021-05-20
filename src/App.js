@@ -2,7 +2,7 @@ import{BrowserRouter as Router,Route,Link} from 'react-router-dom';
 import React, { Component } from 'react'
 import 'antd/dist/antd.css';
 import './index.css';
-//import logo from '../src/image/logo192.png';
+
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { MenuUnfoldOutlined,MenuFoldOutlined,UnorderedListOutlined ,CaretRightOutlined } from '@ant-design/icons';
 //Root
@@ -23,7 +23,7 @@ import Jacobi from './maths/linear/Jacobi';
 //   console.lo
 // }
 // )
-//menu
+
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 class App extends Component {
