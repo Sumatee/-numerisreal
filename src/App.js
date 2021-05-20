@@ -23,7 +23,7 @@ import Jacobi from './maths/linear/Jacobi';
 //   console.lo
 // }
 // )
-
+//menu
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 class App extends Component {
