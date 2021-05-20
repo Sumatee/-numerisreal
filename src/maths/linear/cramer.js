@@ -89,7 +89,7 @@ class cramer extends Component {
         }
 
         this.setState({
-            showDimentionForm: false,
+            showDimentionForm: false,   //row+colum
             showDimentionButton: false,
             showMatrixForm: true,
             showMatrixButton: true

@@ -12,7 +12,7 @@ import newton from './maths/root/newton';
 //linear
 import cramer from './maths/linear/cramer';
 import Jacobi from './maths/linear/Jacobi';
-import LU from './maths/linear/LU';
+
 
 
 
@@ -82,8 +82,7 @@ class App extends Component {
                   
                   <Menu.Item key="9"><CaretRightOutlined />Jacobi<Link to = "/jacobi"/>   </Menu.Item>
                  
-                  
-                  <Menu.Item key="12"><CaretRightOutlined />LU Decomposition Method<Link to = "/LU"/> </Menu.Item>
+        
                   <Menu.Item key="13"><CaretRightOutlined />Cholesky Decomposition</Menu.Item>
                 </SubMenu>
                 
@@ -126,7 +125,7 @@ class App extends Component {
             <Route path = "/onepoint" component = {onepoint} />
             <Route path = "/newton" component = {newton} />
             <Route path = "/cramer" component = {cramer} />
-            //<Route path = "/LU" component = {LU} />
+            
           
             
             </Content>

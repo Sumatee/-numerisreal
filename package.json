@@ -19,8 +19,10 @@
     "react-plotlyjs": "^0.4.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-script": "^2.0.5",
     "react-scripts": "4.0.3",
     "router": "^1.3.5",
+    "start": "^5.1.0",
     "swagger-jsdoc": "^7.0.0-rc.6",
     "swagger-ui-express": "^4.1.6",
     "web-vitals": "^1.1.1"

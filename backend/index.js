@@ -4,7 +4,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-//const port = process.env.PORT || 5000;
 //Extended
 const swaggerOptions = {
  swaggerDefinition:{
@@ -31,7 +30,7 @@ app.use(bodyParser.json());
 // app.get('/customers',(req,res) => {
 //  res.send('COMPLETE')
 // })
-//
+
 // app.listen(port, ()=> {
 //   console.log('Sever listening on port ${port}');
 // });
