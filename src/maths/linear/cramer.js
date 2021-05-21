@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Card, Input, Button} from 'antd';
 import 'antd/dist/antd.css';
 import { det } from 'mathjs';
-const InputStyle = {
+const InputStyle = { //ช่องกรอกinput
     background: "#ffffff",
     color: "black", 
     //ontWeight: "bold", 
@@ -29,7 +29,7 @@ class cramer extends Component {
     
     }
     
-
+//จะหาค่าไหนเอามาใส่columนั้น
     cramer() {
         this.initMatrix();
         var counter=0; 
@@ -46,9 +46,11 @@ class cramer extends Component {
                 }
             
             } 
-            counter++;
+            counter++;//รอบของจำนวนที่จะoutputออกมา
+            //tranforMatrixเอาvectorไปใส่ในcolum
             answer.push(<h2>X<sub>{counter}</sub>=&nbsp;&nbsp;{Math.round(det(transformMatrix))/Math.round(det(A))}</h2>)
-            answer.push(<br/>)
+            //answer.push(<br/>)
+            console.log("det A",det(A));
             
 
         }
@@ -58,6 +60,7 @@ class cramer extends Component {
 
       
     }
+
     createMatrix(row, column) {
         for (var i=1 ; i<=row ; i++) {
             for (var j=1 ; j<=column ; j++) {
@@ -70,8 +73,10 @@ class cramer extends Component {
                     color: "black",
                     //fontSize: "18px",
                     //fontWeight: "bold"
-                }} 
-                id={"a"+i+""+j} key={"a"+i+""+j} placeholder={"a"+i+""+j} />)  
+                }}    
+                id={"a"+i+""+j}  placeholder={"a"+i+""+j} 
+                />)  
+                //console.log(key);
             }
             matrixA.push(<br/>)
             matrixB.push(<Input style={{
@@ -85,7 +90,7 @@ class cramer extends Component {
                 //fontSize: "18px",
                 //fontWeight: "bold"
             }} 
-            id={"b"+i} key={"b"+i} placeholder={"b"+i} />)
+            id={"b"+i}  placeholder={"b"+i} />)
         }
 
         this.setState({
