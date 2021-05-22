@@ -60,7 +60,7 @@ class bisection extends Component
   }
 
   apinumer = (a) => {
-    axios.get("http://localhost:5678/getweb").then((res) => {
+    axios.get("http://localhost:5600/data/bisection").then((res) => {
       const apis = res.data;
       this.setState({ apis });
     });
@@ -205,19 +205,19 @@ class bisection extends Component
     this.setState({showTable:true,showGrap:true})
     this.Graph(data['xl'], data['xr'])
     
-    const numerdata = {
-      EQU: this.state.fx,
-      XL: this.state.xl,
-      XR: this.state.xr,
-    };
-    axios
-      .post("http://localhost:5678/postdatabase", {
-        numerdata,
-      })
-      .then((res) => {
-         console.log(res);
-         console.log(res.data);
-      });
+    // const numerdata = {
+    //   EQU: this.state.fx,
+    //   XL: this.state.xl,
+    //   XR: this.state.xr,
+    // };
+    // axios
+    //   .post("http://localhost:5000/postdatabase", {
+    //     numerdata,
+    //   })
+    //   .then((res) => {
+    //      console.log(res);
+    //      console.log(res.data);
+    //   });
   }
  
 ////////////////////////////
@@ -280,9 +280,9 @@ class bisection extends Component
               <ul>
                 {this.state.apis.map((api) => (
                   <li>
-                    <h1>Equation = {api.EQU}</h1>
-                    <h1>XL = {api.Xl}</h1>
-                    <h1>XR = {api.XR}</h1>
+                    <h1>Equation = {api.fx}</h1>
+                    <h1>XL = {api.xl}</h1>
+                    <h1>XR = {api.xr}</h1>
                   </li>
                 ))}
               </ul>

@@ -1,8 +1,12 @@
 version: "3.7"
 services:
-  web:
-    container_name: frontend1
+  numer:
+    container_name: frontendv2
     build: .
     ports:
       - 8000:3000
-  
+  method:
+    container_name: backendv2
+    build: ./backend
+    ports:
+       - 5000:5600

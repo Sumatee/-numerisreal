@@ -53,7 +53,7 @@ class newtonRaph extends Component
     this.onSubmit = this.onSubmit.bind(this);
   }
   apinumer = (a) => {
-    axios.get("http://localhost:5678/getweb").then((res) => {
+    axios.get("http://localhost:5600/data/newton").then((res) => {
       const apis = res.data;
       this.setState({ apis });
     });
@@ -158,19 +158,19 @@ class newtonRaph extends Component
     this.createTable(data['x1'], data['x2'], data['error']);
     this.setState({showTable:true,showGrap:true})
     this.Graph(data['x1'])
-    const numerdata = {
-      EQU: this.state.fx,
-      XL: this.state.x1,
-      //XR: this.state.xr,
-    };
-    axios
-      .post("http://localhost:5678/postdatabase", {
-        numerdata,
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
+    // const numerdata = {
+    //   EQU: this.state.fx,
+    //   XL: this.state.x1,
+    //   //XR: this.state.xr,
+    // };
+    // axios
+    //   .post("http://localhost:5678/postdatabase", {
+    //     numerdata,
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     console.log(res.data);
+    //   });
   }
  ///////////////////////////////
     render(){
@@ -202,7 +202,7 @@ class newtonRaph extends Component
                 />
               </h1>
               <br></br>
-              <h1>Xi-1 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <h1>X0 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Input size="large" placeholder="Input your Xl" name = "x1"style={{ width: 500 }}
                 onChange={this.onInputChange}
                 />
@@ -226,8 +226,8 @@ class newtonRaph extends Component
               <ul>
                 {this.state.apis.map((api) => (
                   <li>
-                    <h1>Equation = {api.EQU}</h1>
-                    <h1>Xi-1 = {api.Xl}</h1>
+                    <h1>Equation = {api.fx}</h1>
+                    <h1>X0 = {api.x0}</h1>
                   
                   </li>
                 ))}

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {Card, Input, Button} from 'antd';
 import 'antd/dist/antd.css';
 import { det } from 'mathjs';
+import axios from 'axios';
 const InputStyle = { //ช่องกรอกinput
     background: "#ffffff",
-    color: "black", 
+    color: "black"
     //ontWeight: "bold", 
     //fontSize: "24px"
 };
-
+var api
 var A = [], B = [], answer = [], matrixA = [], matrixB = []
 class cramer extends Component {
     
@@ -26,8 +27,10 @@ class cramer extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.cramer = this.cramer.bind(this);
+
     
     }
+    
     
 //จะหาค่าไหนเอามาใส่columนั้น
     cramer() {
@@ -111,17 +114,31 @@ class cramer extends Component {
             B.push(parseFloat(document.getElementById("b"+(i+1)).value));
         }
     }
-    
+   
+    async dataapi() {
+        await axios({method: "get",url: "http://localhost:5600/data/cramer",}).then((response) => {console.log("response: ", response.data);api = response.data;});
+        await this.setState({
+            row: api.row,
+            column: api.row, //เท่ากัน
+          });
+          
+          matrixA = [];
+          matrixB = [];
+          await this.createMatrix(api.row, api.row);
+          for (let i = 1; i <= api.row; i++) {
+            for (let j = 1; j <= api.row; j++) {
+              document.getElementById("a" + i + "" + j).value = api.A[i - 1][j - 1];
+            }
+            document.getElementById("b" + i).value = api.B[i - 1];
+          }
+          this.cramer();
+    }
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
-        
           
       }
-    
-    
-    
     render() {
         return(
             <div className="ContentSheet">
@@ -153,6 +170,7 @@ class cramer extends Component {
                                 </Button>
                         }
                         {this.state.showMatrixButton && 
+                        <div>
                             <Button 
                                 shape="round"
                                 id="matrix_button"  
@@ -160,8 +178,16 @@ class cramer extends Component {
                                 onClick={()=>this.cramer()}>
                                 Submit
                             </Button>
-                            
+                            <Button shape="round" id="submit_button" 
+                            onClick= {
+                                ()=>this.dataapi()
+                                 }  
+                                 style={{background: "#fc895b", color: "black", fontSize: "16px"}}
+                                 >API
+                                 </Button>
+                        </div>
                         }
+                        
                     </Card>
                     
                     {this.state.showOutputCard &&
@@ -181,6 +207,7 @@ class cramer extends Component {
     }
 }
 export default cramer;
+//mayyyyyyyyyyy
 
 
 
