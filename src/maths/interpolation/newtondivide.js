@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Input, Table, Button } from "antd";
 import { Card, Col, Row } from "antd";
 const axios = require("axios");
-var api;
+let api;
 const initialState = {
   Numberofpoint: 0,
   xtrue: 0,
@@ -25,18 +25,18 @@ var columns = [
     key: "y",
   },
 ];
-var columnsC = [
-  {
-    title: "C auther",
-    dataIndex: "c",
-    key: "c",
-  },
-  {
-    title: "value",
-    dataIndex: "value",
-    key: "value",
-  },
-];
+// var columnsC = [
+//   {
+//     title: "C auther",
+//     dataIndex: "c",
+//     key: "c",
+//   },
+//   {
+//     title: "value",
+//     dataIndex: "value",
+//     key: "value",
+//   },
+// ];
 let x = [],
   y = [],
   tableTag = [],
@@ -53,20 +53,20 @@ export default function Newtondivide() {
   const handlechange = (e) => {
     setVariable({ ...variable, [e.target.name]: e.target.value });
   };
-  // const clearState = () => {
-  //   setshowC(false);
-  //   setshowans(false);
-  //   setshowtable(false);
-  //   setVariable({ ...initialState });
-  //   x = [];
-  //   y = [];
-  //   tableTag = [];//
-  //   tempTag = [];//
-  //   valueX = [];
-  //   valueY = [];
-  //   datac = [];
-  //   fx = undefined;
-  // };
+  const clearState = () => {
+    setshowC(false);
+    setshowans(false);
+    setshowtable(false);
+    setVariable({ ...initialState });
+    x = [];
+    y = [];
+    tableTag = [];//
+    tempTag = [];//
+    valueX = [];
+    valueY = [];
+    datac = [];
+    fx = undefined;
+  };
   function createTable(n) {
     for (var i = 1; i <= n; i++) {
       x.push(
@@ -188,7 +188,7 @@ export default function Newtondivide() {
     y = [];
     tableTag = [];
     tempTag = [];
-    await createInterpolatePointInput(api.interpolateinput);
+    //await createInterpolatePointInput(api.interpolateinput);
     await createTable(api.numberpoint);
     for (let i = 1; i <= api.numberpoint; i++) {
       document.getElementById("x" + i).value = api.arrayX[i - 1];
@@ -198,88 +198,96 @@ export default function Newtondivide() {
 
   return (
     <div>
-      <p>Newton Divide Difference</p>
-      <Card style={{ justifyContent: "right" }}>
-
-        <Button
-          type="primary"
-          style={{ marginLeft: "5px" }}
-          onClick={() => example()}
-        >
-          Example
-        </Button>
-      </Card>
-      <div>
-        <Row gutter={10}>
-          <Col span={4}>
-            <Card>
-              <p style={{ fontSize: "20px" }}>Number of points</p>
+       <Card title={"Newton-Divide Interpolation"}
+             style={{ width: 700, background: "#e0ecff", color: "#cbd4d2",padding: 20,textAlign: 'center'}}>
+                 <p style={{ fontSize: "16px",color:"black" }}>Number of points</p>
               <Input
-                placeholder="row matrix"
+                placeholder="number"
                 name="Numberofpoint"
                 value={variable.Numberofpoint}
-                style={{ width: "90%" }}
+                style={{ width: "30%" ,height:"20%",}}
                 onChange={handlechange}
               />
-              <p style={{ fontSize: "20px" }}>X to find</p>
+              <p style={{ marginTop: "2vh",fontSize: "16px",color:"black" }}>x to find</p>
               <Input
-                placeholder="column matrix"
+                placeholder="f(x)"
                 name="xtrue"
                 value={variable.xtrue}
-                style={{ width: "90%" }}
+                style={{ width: "30%" ,height:"20%", }}
                 onChange={handlechange}
               />
-              <div style={{ marginTop: "1vh" }}>
+               <div >
                 <Button
-                  type="primary"
+                  type="submit" shape="round" 
+                  style={{ marginTop: "6vh",color:'#140101',background:'#d82bff'}} 
                   onClick={() => {
                     createTable(parseFloat(variable.Numberofpoint));
                     createInterpolatePointInput(variable.interpolatepoint);
                   }}
                 >
-                  Submit button
+                  Submit 
                 </Button>
-              </div>
-              <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Button
+          type="submit" shape="round" 
+          style={{ marginTop: "6vh",color:'#140101',background:'#d82bff'}} 
+          onClick={() => example()}
+        >
+         API
+        </Button>
+        </div>
+        {/* <Button
+          type="primary"
+          style={{ marginLeft: "5px" }}
+          onClick={() => example()}
+        >
+          Example
+        </Button> */}
+      </Card>
+      <div>
+      
+{/*            
               {showans && (
                 <Card>
                   <p style={{ fontSize: "20px" }}>Answer</p>
                   <p style={{ fontSize: "20px" }}>{fx}</p>
                 </Card>
               )}
-            </Card>
-          </Col>
-          <Col span={20}>
-            <Card style={{ justifyContent: "left" }}>
-              <p style={{ fontSize: "20px" }}>Table</p>
+             */}
+         
+         
+         <Card title={"Please input data"}
+             style={{ width: 700, background: "#e0ecff", color: "#cbd4d2",padding: 20,textAlign: 'left'}}>>
 
               {showtable && (
                 <Card>
                   <Table
                     columns={columns}
                     dataSource={tableTag}
-                    pagination={false}
+                    // pagination={false}
                   />
-                  <br />
+                 <br />
                   <Button
+                  type="submit" shape="round" 
+                  style={{ color:'#140101',background:'#ffec3d'}} 
                     onClick={() => {
                       Newton(parseFloat(variable.xtrue));
                     }}
                   >
-                    Submit
+                    Calculate
                   </Button>
+                  {showans && (
+                <Card>
+                  <p style={{ fontSize: "20px"}}>Answer : {fx}</p>
+                 
                 </Card>
               )}
-              {showC && (
-                <Table
-                  columns={columnsC}
-                  dataSource={datac}
-                  pagination={false}
-                />
+                </Card>
               )}
+              
             </Card>
-          </Col>
-        </Row>
+      
+       
       </div>
     </div>
   );

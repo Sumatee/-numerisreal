@@ -1,16 +1,11 @@
 [
     {
         "name": "bisection",
-        "fx" : "(x^5)+13",
+        "fx" : "(x^4)+13",
         "xl" : 1.5,
         "xr" : 2
     },
-    {
-        "name": "bisection",
-        "fx" : "(x^2)-13",
-        "xl" : 2,
-        "xr" : 3
-    },
+   
     {
         "name": "newton",
         "fx" : "(x^2)-7",
@@ -30,36 +25,40 @@
     },
     {
         "name": "falseposition",
-        "fx" : "x-(1/43)",
-        "xl" : 0.02,
-        "xr" : 0.03
+        "fx" : "x^5+7",
+        "xl" : 5,
+        "xr" : 9
     },
     {
         "name": "cramer",
         "A" : [[-2,3,1],[3,4,-5],[1,-2,1]],
         "B" : [9,0,-4],
-        "row":3,
-        "column":3
+        "row":3
+        
     },
     {
         "name": "newtondivide",
         "arrayX": [
             0,
-            20000,
-            40000,
-            60000,
-            80000
+            1,
+            2,
+            3
+            
         ],
         "arrayY": [
-            9.81,
-            9.7487,
-            9.6879,
-            9.6879,
-            9.5682
+            -7,
+            -3,
+            6,
+            25
         ],
-        "xfind": 42000,
-        "numberpoint": 5,
-        "interpolateinput": 3
-       
+        "xfind": 2.5,
+        "numberpoint": 4,
+        "interpolateinput": 3,
+        "interpolatePoint": [
+            1,
+            2,
+            3,
+            4
+        ]
     }
 ]

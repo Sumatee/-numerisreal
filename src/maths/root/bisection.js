@@ -62,7 +62,14 @@ class bisection extends Component
   apinumer = (a) => {
     axios.get("http://localhost:5600/data/bisection").then((res) => {
       const apis = res.data;
-      this.setState({ apis });
+      this.setState({
+        fx:apis.fx,
+        xl:apis.xl,
+        xr:apis.xr
+      })
+      console.log(apis.fx);
+      this.onSubmit({ apis });
+      
     });
   };
 

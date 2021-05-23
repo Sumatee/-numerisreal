@@ -115,24 +115,25 @@ class cramer extends Component {
         }
     }
    
-    async dataapi() {
-        await axios({method: "get",url: "http://localhost:5600/data/cramer",}).then((response) => {console.log("response: ", response.data);api = response.data;});
+    async apishow() {
+        await axios({method: "get",url: "http://localhost:5600/data/cramer",}).then((response) => 
+        {console.log("response: ", response.data);api = response.data;});
         await this.setState({
             row: api.row,
-            column: api.row, //เท่ากัน
+            column: api.row,
           });
-          
           matrixA = [];
           matrixB = [];
           await this.createMatrix(api.row, api.row);
           for (let i = 1; i <= api.row; i++) {
             for (let j = 1; j <= api.row; j++) {
-              document.getElementById("a" + i + "" + j).value = api.A[i - 1][j - 1];
+              document.getElementById("a" + i + "" + j).value =
+                api.A[i - 1][j - 1];
             }
             document.getElementById("b" + i).value = api.B[i - 1];
           }
           this.cramer();
-    }
+    }   
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -177,10 +178,10 @@ class cramer extends Component {
                                 style={{background: "#fc895b", color: "black",fontSize: "16px"}}
                                 onClick={()=>this.cramer()}>
                                 Submit
-                            </Button>
-                            <Button shape="round" id="submit_button" 
+                            </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Button shape="round" 
                             onClick= {
-                                ()=>this.dataapi()
+                                ()=>this.apishow()
                                  }  
                                  style={{background: "#fc895b", color: "black", fontSize: "16px"}}
                                  >API

@@ -57,9 +57,9 @@ app.get("/data/:name", (req, res) => {
   const resalt = data.filter(function(data){return data.name == req.params.name})
   console.log(resalt.length)
   if(resalt.length > 0){
-    res.json(resalt)
+    res.json(resalt[Math.floor(Math.random() * resalt.length)])
  }else{
-  res.json(resalt[Math.floor(Math.random() * resalt.length)])
+  res.json({})
   }
 });
 
