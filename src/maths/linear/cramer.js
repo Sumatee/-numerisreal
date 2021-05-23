@@ -52,7 +52,7 @@ class cramer extends Component {
             counter++;//รอบของจำนวนที่จะoutputออกมา
             //tranforMatrixเอาvectorไปใส่ในcolum
             answer.push(<h2>X<sub>{counter}</sub>=&nbsp;&nbsp;{Math.round(det(transformMatrix))/Math.round(det(A))}</h2>)
-            //answer.push(<br/>)
+            answer.push(<br/>)
             console.log("det A",det(A));
             
 
@@ -147,7 +147,7 @@ class cramer extends Component {
                     <Card
                     title={"Cramer's Rule"}
                     bordered={true}
-                    style={{ width: 650, background: "#e0ecff", color: "#cbd4d2",padding: 20,textAlign: 'center',fontSize: "12px"}}
+                    style={{ width: 650, background: "#e0ecff", color: "#cbd4d2",padding: 20,textAlign: 'center',fontSize: "16px"}}
                     onChange={this.handleChange}
                     >
                         {this.state.showMatrixForm && <div><h2>Matrix [A]</h2><br/>{matrixA}<h2>Vector [B]<br/></h2>{matrixB}</div>}

@@ -12,15 +12,8 @@ import newton from './maths/root/newton';
 //linear
 import cramer from './maths/linear/cramer';
 import Jacobi from './maths/linear/Jacobi';
-
-
-// const express = require("express");
-// const app = express();
-// con port = process.env.PORT || 5000;
-// app.listen(port,() => {
-//   console.lo
-// }
-// )
+//tnterpolation
+import newtondivide from './maths/interpolation/newtondivide';
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -93,7 +86,7 @@ class App extends Component {
                 </span>
                   }
                 >
-                  <Menu.Item key="14"><CaretRightOutlined />Newton's Divided</Menu.Item>
+                  <Menu.Item key="14"><CaretRightOutlined />Newton's Divided<Link to = "newtondivide"/> </Menu.Item>
                   <Menu.Item key="15"><CaretRightOutlined />Lagrange  </Menu.Item>
                   <Menu.Item key="16"><CaretRightOutlined />Spline  </Menu.Item>
                 </SubMenu>
@@ -123,6 +116,7 @@ class App extends Component {
             <Route path = "/onepoint" component = {onepoint} />
             <Route path = "/newton" component = {newton} />
             <Route path = "/cramer" component = {cramer} />
+            <Route path = "/newtondivide" component = {newtondivide} />
             
           
             

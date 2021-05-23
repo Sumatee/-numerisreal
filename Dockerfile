@@ -1,6 +1,6 @@
 #nodedocker
 FROM node:12.18.1
-#สร้างdirectoryเพื่อใช้งานเก็บไว้ในdocker no see
+#สร้างdirectory
 WORKDIR /app 
 COPY package.json ./
 # Create app directory ลงnode module
